@@ -69,7 +69,7 @@ public class CommonEvents {
             100, particleSpread, particleSpread, particleSpread, 0.5);
 
         // Build the translation key
-        boolean shatters = !player.abilities.instabuild && level.random.nextInt(5) == 0;
+        boolean shatters = !player.abilities.instabuild && level.random.nextDouble() < ModConfigs.shatterChance.get();
         StringBuilder translation = new StringBuilder();
         translation.append("bettereyes");
         if (distance < 12.0) {
@@ -92,8 +92,7 @@ public class CommonEvents {
 
         }
 
-        player.sendMessage(new TranslationTextComponent(translation.toString(), held.getHoverName()), Util.NIL_UUID);
-
+        player.displayClientMessage(new TranslationTextComponent(translation.toString(), held.getHoverName()), ModConfigs.printToActionBar.get());
         player.awardStat(Stats.ITEM_USED.get(held.getItem()));
     }
 
