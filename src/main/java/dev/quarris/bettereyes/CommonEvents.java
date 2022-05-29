@@ -11,7 +11,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
@@ -46,7 +45,7 @@ public class CommonEvents {
         BlockPos structurePos = ((ServerWorld) level).getChunkSource().getGenerator().findNearestMapFeature((ServerWorld) level, structure, player.blockPosition(), 100, false);
 
         if (structurePos == null) { // Structure not found
-            player.sendMessage(new TranslationTextComponent("bettereyes.not_found"), Util.NIL_UUID);
+            player.displayClientMessage(new TranslationTextComponent("bettereyes.not_found"), ModConfigs.printToActionBar.get());
             return;
         }
 
